@@ -35,3 +35,5 @@ node_modules
 #local env file
 .env.local
 .env
+node_modules
+.env
