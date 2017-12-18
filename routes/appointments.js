@@ -22,30 +22,18 @@ router.get('/', function(req, res, next) {
 
 router.get('/logout', function(req, res) {
     req.logout(); // passport provide it
-    res.redirect('/users'); // Successful. redirect to localhost:3000/users
+    res.redirect('/appointments'); // Successful. redirect to localhost:3000/users
 });
 
-function loggedIn(req, res, next) {
-  if (req.user) {
-    next(); // req.user exists, go to the next function (right after loggedIn)
-  } else {
-    res.redirect('/users/login');
-    // user doesn't exists redirect to localhost:3000/users/login
-  }
-}
+router.get('/signup', function(req, res){
+  res.render('appointments/signup.hbs');
+});
 
-function notLoggedIn(req, res, next) {
-  if (!req.user) {
-    next();
-  } else {
-    res.redirect('appointments/index');
-  }
-}
 
-router.get('/appointments/login', notLoggedIn, function(req, res){
+router.get('/login', notLoggedIn, function(req, res){
     //success is set true in sign up page
     //req.flash('error') is mapped to 'message' from passport middleware
-    res.render('appointments/login.hbs', {success:req.query.success, errorMessage: req.flash('error')});
+    res.render('appointments/login.hbs', {success:req.query.success, errorMessage: 'error'});
 });
 
 router.post('/appointments/login',
@@ -138,5 +126,24 @@ router.post('/:id/delete', function(req, res, next) {
       res.redirect('/');
     });
 });
+
+
+
+function loggedIn(req, res, next) {
+  if (req.user) {
+    next(); // req.user exists, go to the next function (right after loggedIn)
+  } else {
+    res.redirect('/users/login');
+    // user doesn't exists redirect to localhost:3000/users/login
+  }
+}
+
+function notLoggedIn(req, res, next) {
+  if (!req.user) {
+    next();
+  } else {
+    res.redirect('appointments/index');
+  }
+}
 
 module.exports = router;
