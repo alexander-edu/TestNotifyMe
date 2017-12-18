@@ -11,9 +11,27 @@ const appointments = require('./routes/appointments');
 const scheduler = require('./scheduler');
 
 const app = express();
+const cons = require('consolidate');
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
+cons.swig('views/appointments/index.hbs', function(err, hbs) {
+  if (err) throw err;
+  console.log(handlebars);
+});
+cons.swig('views/appointments/login.hbs', function(err, hbs) {
+  if (err) throw err;
+  console.log(handlebars);
+});
+cons.swig('views/appointments/signup.hbs', function(err, hbs) {
+  if (err) throw err;
+  console.log(handlebars);
+});
+cons.swig('views/appointments/user.hbs', function(err, hbs) {
+  if (err) throw err;
+  console.log(handlebars);
+});
+// view engine setup
+
 app.set('view engine', 'pug');
 
 // uncomment after placing your favicon in /public
@@ -26,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.moment = require('moment');
 
 app.use('/appointments', appointments);
-app.use('/', appointments);
+// app.use('/', appointments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

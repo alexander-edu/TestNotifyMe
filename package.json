@@ -28,19 +28,24 @@
     "node": ">=6.x"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.15.2",
+    "consolidate": "^0.15.0",
     "cookie-parser": "~1.4.3",
     "cron": "^1.1.0",
     "debug": "~2.3.0",
     "dotenv-safe": "^4.0.4",
     "eslint": "^3.19.0",
     "express": "~4.14.0",
+    "hbs": "^4.0.1",
     "moment": "^2.11.2",
     "moment-timezone": "^0.5.0",
     "mongoose": "^4.4.3",
     "morgan": "~1.7.0",
+    "passport": "^0.4.0",
     "pug": "^2.0.0-beta.12",
     "serve-favicon": "~2.3.0",
+    "swig": "^1.4.2",
     "twilio": "~3.0.0-rc.13"
   },
   "devDependencies": {
